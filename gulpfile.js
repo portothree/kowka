@@ -2,10 +2,11 @@ const fileinclude = require("gulp-file-include");
 const gulp = require("gulp");
 
 const app = {
-  srcPath: "src/"
+  srcPath: "src/",
+  prdPath: "dist/"
 };
 
-gulp.task("fileinclude", async () => {
+gulp.task("html", async () => {
   gulp
     .src(app.srcPath + "pages/*.html")
     .pipe(
@@ -14,5 +15,5 @@ gulp.task("fileinclude", async () => {
         basepath: "@file"
       })
     )
-    .pipe(gulp.dest("./dist"));
+    .pipe(gulp.dest(app.prdPath));
 });
