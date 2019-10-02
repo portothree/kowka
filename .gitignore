@@ -98,4 +98,4 @@ public
 .dynamodb/
 
 #prod folder
-/dist
+/dist/
