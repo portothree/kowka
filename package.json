@@ -5,6 +5,7 @@
   "author": "porto",
   "license": "MIT",
   "devDependencies": {
+    "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-file-include": "^2.1.0"
   }

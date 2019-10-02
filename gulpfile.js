@@ -1,5 +1,6 @@
-const fileinclude = require("gulp-file-include");
 const gulp = require("gulp");
+const fileinclude = require("gulp-file-include");
+const browserSync = require("browser-sync").create();
 
 const app = {
   srcPath: "src/",
@@ -16,4 +17,12 @@ gulp.task("html", async () => {
       })
     )
     .pipe(gulp.dest(app.prdPath));
+});
+
+gulp.task("browser-sync", () => {
+  browserSync.init({
+    server: {
+      baseDir: app.prdPath
+    }
+  });
 });
