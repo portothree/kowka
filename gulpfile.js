@@ -1,50 +1,23 @@
-const { src, dest, watch, series, parallel } = require("gulp");
-const fileinclude = require("gulp-file-include");
-const sass = require("gulp-sass");
-const concat = require("gulp-concat");
+const { watch, series, parallel } = require("gulp");
 const browserSync = require("browser-sync").create();
 
-const app = {
-  srcPath: "src/",
-  prdPath: "dist/",
+const config = require("./src/config.js");
 
-  scssPath: "src/common.blocks/**/*.scss",
-  htmlPath: "src/pages/*.html"
-};
 
-function html(done) {
-  src(app.htmlPath)
-    .pipe(
-      fileinclude({
-        prefix: "@@",
-        basepath: "@file"
-      })
-    )
-    .pipe(dest(app.prdPath))
-    .pipe(browserSync.stream());
+const markup = require("./tasks/markup");
+const scss = require("./tasks/scss");
+const assets = require("./tasks/assets");
 
-  done();
-}
-
-function style(done) {
-  src(app.scssPath)
-    .pipe(sass())
-    .pipe(concat("style.css"))
-    .pipe(dest(app.prdPath + "css"))
-    .pipe(browserSync.stream());
-
-  done();
-}
 
 function watchTask() {
   browserSync.init({
     server: {
-      baseDir: app.prdPath
+      baseDir: config.paths.prd.main
     }
   });
 
-  watch(app.htmlPath).on("change", html);
-  watch(app.scssPath, style);
+  watch(config.paths.markup).on("change", markup);
+  watch(config.paths.scss, scss);
 }
 
-exports.default = series(parallel(html, style), watchTask);
+exports.default = series(parallel(markup, scss, assets), watchTask);
