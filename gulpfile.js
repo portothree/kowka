@@ -5,7 +5,7 @@ const config = require("./src/config.js");
 
 
 const markup = require("./tasks/markup");
-const scss = require("./tasks/scss");
+const style = require("./tasks/style");
 const assets = require("./tasks/assets");
 
 
@@ -17,7 +17,8 @@ function watchTask() {
   });
 
   watch(config.paths.markup).on("change", markup);
-  watch(config.paths.scss, scss);
+  watch(config.paths.style, style);
+  watch(config.paths.src.assets, assets);
 }
 
-exports.default = series(parallel(markup, scss, assets), watchTask);
+exports.default = series(parallel(markup, style, assets), watchTask);

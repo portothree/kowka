@@ -2,7 +2,7 @@ module.exports = {
   paths: {
     src: {
       main: "src/",
-      assets: "src/**/assets/"
+      assets: "src/**/assets/**"
     },
     prd: {
       main: "dist/",
@@ -11,6 +11,6 @@ module.exports = {
     tasks: "taks/",
 
     markup: "src/pages/*.html",
-    scss: "src/common.blocks/**/*.scss",
+    style: "src/common.blocks/**/*{.scss, .css}",
   }
 };
