@@ -5,7 +5,6 @@ const browserSync = require("browser-sync").create();
 
 const config = require("../src/config.js");
 
-
 module.exports = function style() {
   return src(config.paths.style)
     .pipe(sass())

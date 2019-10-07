@@ -11,6 +11,6 @@ module.exports = {
     tasks: "taks/",
 
     markup: "src/pages/*.html",
-    style: "src/common.blocks/**/*{.scss, .css}",
+    style: "src/common.blocks/**/*.{css,scss}",
   }
 };
