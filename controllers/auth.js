@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
-const { forward } = require("../config/authGuard");
+const { forward } = require("../middleware/authGuard");
 const User = require("../models/User");
 
 router.get("/login", forward, (req, res) => res.render("login"));

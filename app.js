@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const flash = require("connect-flash");
-require("./config/passport")(passport);
+require("./middleware/passport")(passport);
 
 const app = express();
 
@@ -47,9 +47,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// routes
-app.use("/", require("./routes/index"));
-app.use("/auth", require("./routes/auth"));
+// controllers
+app.use("/", require("./controllers/index"));
+app.use("/auth", require("./controllers/auth"));
 
 const PORT = process.env.PORT || 3333;
 

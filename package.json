@@ -1,25 +1,24 @@
 {
-  "name": "kowka-boilerplate",
-  "description": "Boilerplate to quickstart projects using Gulp and BEM methodology",
+  "name": "kowka",
+  "description": "Boilerplate for projects using Gulp, BEM, ",
   "version": "1.0.0",
   "author": "Gustavo Porto",
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/portothree/kowka-boilerplate.git"
+    "url": "https://github.com/portothree/kowka.git"
   },
-  "homepage": "https://github.com/portothree/kowka-boilerplate",
+  "homepage": "https://github.com/portothree/kowka",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "task": "gulp",
     "start": "cross-env WATCH=true gulp",
+    "start-server": "nodemon app.js",
     "clean": "cross-env CLEAN=true gulp compile:templates",
     "build": "cross-env NODE_ENV=production gulp",
     "add": "node ./core/.add",
     "zip": "gulp zip",
-    "zip:dev": "cross-env SNAPSHOT=true gulp zip",
-    "start-back": "node app.js",
-    "dev-back": "nodemon app.js"
+    "zip:dev": "cross-env SNAPSHOT=true gulp zip"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { ensureAuthenticated, forward } = require("../config/authGuard");
+const { ensureAuthenticated, forward } = require("../middleware/authGuard");
 
 router.get("/", forward, (req, res) => res.render("index"));
 
