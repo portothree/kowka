@@ -24,7 +24,7 @@ module.exports = function ( code, page, task ) {
 	const { paths, config, store, isDev, mainBundle } = task
 
 	const withGap = /(\s+)?(<!--(\s+)?GAP:([\w]+)(\s+)?-->)/gi
-	const comment = /(\s+)?(<!--(\s+)?BEMGO:([\w]+)(\s+)?-->)/gi
+	const comment = /(\s+)?(<!--(\s+)?PORTO:([\w]+)(\s+)?-->)/gi
 	const pattern = /@(async|defer)/gi
 	const newLine = /(?:\r\n|\r|\n)/g
 	const version = !isDev && config.build.addVersions ? `?v=${Date.now()}` : ''
@@ -62,7 +62,7 @@ module.exports = function ( code, page, task ) {
 		if ( /@async/gi.test( src ) ) attrs += ' async'
 		if ( /@defer/gi.test( src ) ) attrs += ' defer'
 
-		if ( !isExternal( src ) ) src = `${config.build.HTMLRoot}${config.dist.scripts}/${src}`
+		if ( !isExternal( src ) ) src = `${config.build.HTMLRoot}${config.views.scripts}/${src}`
 
 		script = script.replace( '[src]', src.replace( pattern, '' ) + ( isExternal( src ) ? '' : version ) ).replace( '[attr]', attrs )
 
@@ -76,7 +76,7 @@ module.exports = function ( code, page, task ) {
 
 		let style = '<link rel="stylesheet" href="[href]">'
 
-		if ( !isExternal( href ) ) href = `${config.build.HTMLRoot}${config.dist.styles}/${href}`
+		if ( !isExternal( href ) ) href = `${config.build.HTMLRoot}${config.views.styles}/${href}`
 
 		style = style.replace( '[href]', href.replace( pattern, '' ) + ( isExternal( href ) ? '' : version ) )
 		
@@ -99,25 +99,25 @@ module.exports = function ( code, page, task ) {
 		}
 
 		if ( isFile( path.join( paths._favicons, head.browserconfig ) ) )
-			favicons.push( `<meta name="msapplication-config" content="${config.build.HTMLRoot}${config.dist.favicons}/${head.browserconfig}">` )
+			favicons.push( `<meta name="msapplication-config" content="${config.build.HTMLRoot}${config.views.favicons}/${head.browserconfig}">` )
 
 		if ( isFile( path.join( paths._favicons, head.favicon ) ) )
-			favicons.push( `<link rel="shortcut icon" href="${config.build.HTMLRoot}${config.dist.favicons}/${head.favicon}" type="image/x-icon">` )
+			favicons.push( `<link rel="shortcut icon" href="${config.build.HTMLRoot}${config.views.favicons}/${head.favicon}" type="image/x-icon">` )
 
 		if ( isFile( path.join( paths._favicons, head.favicon16 ) ) )
-			favicons.push( `<link rel="icon" href="${config.build.HTMLRoot}${config.dist.favicons}/${head.favicon16}" sizes="16x16" type="image/png">` )
+			favicons.push( `<link rel="icon" href="${config.build.HTMLRoot}${config.views.favicons}/${head.favicon16}" sizes="16x16" type="image/png">` )
 
 		if ( isFile( path.join( paths._favicons, head.favicon32 ) ) )
-			favicons.push( `<link rel="icon" href="${config.build.HTMLRoot}${config.dist.favicons}/${head.favicon32}" sizes="32x32" type="image/png">` )
+			favicons.push( `<link rel="icon" href="${config.build.HTMLRoot}${config.views.favicons}/${head.favicon32}" sizes="32x32" type="image/png">` )
 
 		if ( isFile( path.join( paths._favicons, head.apple ) ) )
-			favicons.push( `<link rel="apple-touch-icon" href="${config.build.HTMLRoot}${config.dist.favicons}/${head.apple}" sizes="180x180">` )
+			favicons.push( `<link rel="apple-touch-icon" href="${config.build.HTMLRoot}${config.views.favicons}/${head.apple}" sizes="180x180">` )
 
 		if ( isFile( path.join( paths._favicons, head.pinned ) ) )
-			favicons.push( `<link rel="mask-icon" href="${config.build.HTMLRoot}${config.dist.favicons}/${head.pinned}" color="${config.app && config.app.safariPinnedTab || '#424b5f'}">` )
+			favicons.push( `<link rel="mask-icon" href="${config.build.HTMLRoot}${config.views.favicons}/${head.pinned}" color="${config.app && config.app.safariPinnedTab || '#424b5f'}">` )
 
 		if ( isFile( path.join( paths._favicons, head.manifest ) ) )
-			favicons.push( `<link rel="manifest" href="${config.build.HTMLRoot}${config.dist.favicons}/${head.manifest}">` )
+			favicons.push( `<link rel="manifest" href="${config.build.HTMLRoot}${config.views.favicons}/${head.manifest}">` )
 
 	}
 
@@ -170,16 +170,16 @@ module.exports = function ( code, page, task ) {
 	injected = injected.replace( /(,|'|"|`| )@([\w-]+)/gi, ( str, quote, block ) => {
 
 		const paths = {
-			styles: config.dist.styles,
-			symbol: path.join( config.dist.symbol, 'symbol.svg' ),
-			scripts: config.dist.scripts,
-			static: config.dist.static,
-			favicons: config.dist.favicons,
+			styles: config.views.styles,
+			symbol: path.join( config.views.symbol, 'symbol.svg' ),
+			scripts: config.views.scripts,
+			static: config.views.static,
+			favicons: config.views.favicons,
 		}
 
-		const dist = paths[block] || `${paths.static}/${block}`
+		const views = paths[block] || `${paths.static}/${block}`
 
-		return `${quote}${config.build.HTMLRoot}${dist}`
+		return `${quote}${config.build.HTMLRoot}${views}`
 	})
 
 

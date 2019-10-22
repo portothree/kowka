@@ -10,12 +10,12 @@ module.exports = {
 
 	run ( done ) {
 
-		let files = this.paths.dist( '**', '*.*' )
+		let files = this.paths.views( '**', '*.*' )
 
 		if ( process.env.SNAPSHOT ) files = [
 			this.paths.root( '.!(DS_Store)' ),
 			this.paths.root( '*.!(log|db|ini|zip)' ),
-			this.paths.root( '!(node_modules|bower_components|dist)', '**', '*.*' ),
+			this.paths.root( '!(node_modules|bower_components|views)', '**', '*.*' ),
 		]
 
 		return this.gulp.src( files )

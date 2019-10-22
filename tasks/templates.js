@@ -68,7 +68,7 @@ module.exports = {
 	},
 
 	dest () {
-		return this.gulp.dest( this.paths._dist )
+		return this.gulp.dest( this.paths._views )
 	},
 
 	compile () {

@@ -35,14 +35,14 @@ module.exports = function ( asset, dir, options, decl ) {
 
 
 	let name = ''
-	let dist = ''
+	let views = ''
 
 	if ( isFont ) {
 
 		if ( ( !this.isDev || this.isDev && isModule ) && this.store.fonts.indexOf( asset.absolutePath ) === -1 )
 			this.store.fonts.push( asset.absolutePath )
 
-		dist = path.relative( this.paths._styles, this.paths._fonts )
+		views = path.relative( this.paths._styles, this.paths._fonts )
 		name = basename
 
 	} else {
@@ -52,12 +52,12 @@ module.exports = function ( asset, dir, options, decl ) {
 		if ( ( !this.isDev || this.isDev && isModule ) && this.store.imgs.indexOf( asset.absolutePath ) === -1 )
 			this.store.imgs.push( asset.absolutePath )
 
-		dist = path.relative( this.paths._styles, this.paths._img )
+		views = path.relative( this.paths._styles, this.paths._img )
 		name = ( isSprite ? 'sprite_' : '' ) + `${block}_${basename}`
 
 	}
 
-	return this.paths.slashNormalize( path.join( dist, name ) )
+	return this.paths.slashNormalize( path.join( views, name ) )
 
 
 }

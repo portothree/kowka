@@ -11,7 +11,7 @@ module.exports = {
 
 	run ( done ) {
 		return require( 'del' )([
-			this.paths._dist,
+			this.paths._views,
 		])
 	},
 

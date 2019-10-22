@@ -2,8 +2,6 @@
 
 Quick start projects using Gulp, SASS and BEM methodology
 
-
-
 # Structure
 
 ```
@@ -22,8 +20,7 @@ kowka/
 └── package.json
 ```
 
-
-
 # Commands
-* `npm i` — install dependencies
-* `npm start` — start dev
+
+-   `npm i` — install dependencies
+-   `npm start` — start dev

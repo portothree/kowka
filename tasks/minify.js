@@ -21,7 +21,7 @@ module.exports = {
 
 			if ( ignore.length > 0 ) names = `!(${ignore.join('|')})`
 
-			files.push( this.paths.dist( `**/${names}.{${minify.join(',')}}` ) )
+			files.push( this.paths.views( `**/${names}.{${minify.join(',')}}` ) )
 
 		}
 

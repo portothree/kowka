@@ -14,10 +14,10 @@ module.exports = {
 		if ( !this.isDev || !process.env.WATCH ) return done()
 
 		const browserSync = require( 'browser-sync' ).create()
-		const files = this.paths.slashNormalize( this.paths.dist( '**', '*.*' ) )
+		const files = this.paths.slashNormalize( this.paths.views( '**', '*.*' ) )
 
 		browserSync.init({
-			server: this.paths._dist,
+			server: this.paths._views,
 			port: process.env.PORT || 3000,
 			tunnel: process.env.TUNNEL || false,
 			snippetOptions: {

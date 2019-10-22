@@ -13,23 +13,19 @@ module.exports = {
 	use: {
 		templates: '.html',
 		scripts: '.js',
-		styles: '.css',
+		styles: '.scss',
 	},
 
 	build: {
 		imagemin: [ 'png', 'jpg' ],
 		sourcemaps: [ 'js', 'css' ],
 		autoprefixer: [ 'last 3 versions', 'ie 10', 'ie 11' ],
+		mainLevel: "common",
+		mainBundle: "app",
+		globalStyles: "app/blocks/global.scss"
 	},
 
-	autoCreate: {
-		onlyOnWatch: true,
-		files: [ '.css' ],
-		levels: [ 'develop' ],
-		ignoreNodes: [ 'symbol', /_no_js/i ],
-	},
-
-	dist: {
+	views: {
 		styles: 'styles',
 		fonts: 'styles/fonts',
 		img: 'styles/img',

@@ -1,46 +1,26 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="HandheldFriendly" content="true">
-		<meta name="MobileOptimized" content="width">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="format-detection" content="telephone=no">
-		<meta name="format-detection" content="address=no">
-		<title>Hello</title>
-		<meta name="description" content="Simple demo app.">
-		<!-- BEMGO:styles -->
-		<!-- BEMGO:favicons -->
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="width" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="address=no" />
+		<title>Kowka</title>
+		<meta name="description" content="Login page" />
+		<link rel="stylesheet" href="/styles/app.css" />
 	</head>
 	<body>
-		<div class="app app_no_js">
-
-			<!-- BEMGO:symbol -->
-
-			@@include( 'develop/header/header.html', {
-				"slogan": "Hello everyone!"
-			})
-
-			<main class="content">
-				<div class="app__layout">
-					<div class="content__cards">
-						@@for (var i = 0; i < global.jsons.content.cards.length; i++) {
-
-							@@include( 'develop/card/card.html', {
-								"title": "`+global.jsons.content.cards[i].title+`",
-								"image": "`+global.jsons.content.cards[i].image+`",
-								"rating": "`+global.jsons.content.cards[i].rating+`",
-								"description": "`+global.jsons.content.cards[i].description+`"
-							})
-						}
-					</div>
-				</div>
+		<div class="login app app_no_js">
+			<main class="login__content">
+				<h1>Kowka</h1>
 			</main>
-
-			@@include( 'develop/footer/footer.html' )
-
 		</div>
-		<!-- BEMGO:scripts -->
+		<script src="/scripts/app.js"></script>
 	</body>
 </html>

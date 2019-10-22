@@ -1,14 +1,14 @@
 {
-  "name": "kowka",
+  "name": "kowka-boilerplate",
   "description": "Boilerplate to quickstart projects using Gulp and BEM methodology",
   "version": "1.0.0",
   "author": "Gustavo Porto",
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/portothree/kowka.git"
+    "url": "https://github.com/portothree/kowka-boilerplate.git"
   },
-  "homepage": "https://github.com/portothree/kowka",
+  "homepage": "https://github.com/portothree/kowka-boilerplate",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "task": "gulp",
@@ -17,7 +17,21 @@
     "build": "cross-env NODE_ENV=production gulp",
     "add": "node ./core/.add",
     "zip": "gulp zip",
-    "zip:dev": "cross-env SNAPSHOT=true gulp zip"
+    "zip:dev": "cross-env SNAPSHOT=true gulp zip",
+    "start-back": "node app.js",
+    "dev-back": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.7.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -51,6 +65,7 @@
     "gulp-zip": "^5.0.0",
     "htmlparser2": "^4.0.0",
     "js-beautify": "^1.10.2",
+    "nodemon": "^1.19.4",
     "plugin-error": "^1.0.1",
     "postcss-sprites": "^4.2.1",
     "postcss-url": "^8.0.0",

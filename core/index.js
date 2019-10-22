@@ -39,8 +39,8 @@ const paths = {
 		return path.join( this._tasks, ...arguments )
 	},
 
-	dist () {
-		return path.join( this._dist, ...arguments )
+	views () {
+		return path.join( this._views, ...arguments )
 	},
 
 	app () {
@@ -58,7 +58,7 @@ const paths = {
 	_root: root,
 	_core: __dirname,
 	_tasks: path.join( root, 'tasks' ),
-	_dist: path.join( root, 'dist' ),
+	_views: path.join( root, 'views' ),
 	_app: path.join( root, 'app' ),
 	_blocks: path.join( root, 'app', 'blocks' ),
 	_pages: path.join( root, 'app', 'pages' ),
@@ -185,9 +185,9 @@ try {
 	config.favicons = Object.assign( favicons, config.favicons )
 
 
-	// Merge dist
+	// Merge views
 
-	const dist = {
+	const views = {
 		styles: 'styles',
 		fonts: 'styles/fonts',
 		img: 'styles/img',
@@ -197,7 +197,7 @@ try {
 		favicons: 'favicons',
 	}
 
-	config.dist = Object.assign( dist, config.dist )
+	config.views = Object.assign( views, config.views )
 
 
 	// Merge optimization
@@ -257,10 +257,10 @@ try {
 	if ( config.HTMLBeautify !== false ) config.HTMLBeautify = Object.assign( beautify, config.HTMLBeautify )
 
 
-	// Add dist paths
+	// Add views paths
 
-	for ( let key in config.dist ) {
-		if ( ! paths[`_${key}`] ) paths[`_${key}`] = path.join( paths._dist, ( config.dist[key] || '' ).trim() )
+	for ( let key in config.views ) {
+		if ( ! paths[`_${key}`] ) paths[`_${key}`] = path.join( paths._views, ( config.views[key] || '' ).trim() )
 	}
 
 }

@@ -36,7 +36,7 @@ build/Release
 node_modules
 bower_components
 jspm_packages
-dist
+views
 
 # Optional npm cache directory
 .npm
@@ -44,3 +44,9 @@ dist
 
 # Optional REPL history
 .node_repl_history
+
+#yarn lock
+yarn.lock
+
+#env
+.env

@@ -13,7 +13,7 @@ module.exports = {
 
 		if ( this.isDev ) return done()
 
-		const files = this.paths.dist( '*.html' )
+		const files = this.paths.views( '*.html' )
 
 		return this.gulp.src( files )
 			.pipe( this.plumber() )
@@ -24,7 +24,7 @@ module.exports = {
 	},
 
 	dest () {
-		return this.gulp.dest( this.paths._dist )
+		return this.gulp.dest( this.paths._views )
 	},
 
 	inject () {
